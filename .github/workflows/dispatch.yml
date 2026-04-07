@@ -1,0 +1,16 @@
+name: External Trigger Workflow
+
+on:
+  repository_dispatch:
+    types: [trigger_build]
+
+    jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Message
+        run: echo "Workflow triggered successfully"
+
+      - name: Print Payload
+        run: echo "${{ github.event.client_payload }}"
